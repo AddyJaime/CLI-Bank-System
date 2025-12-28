@@ -15,16 +15,6 @@ The codebase is intentionally minimal — it's meant for learning and iterating 
 
 ---
 
-## 📁 Suggested repository structure
-
-- `src/` — source files (C++ implementation)
-- `include/` — public headers
-- `bin/` — compiled binaries (ignored by git)
-- `README.md` — this file
-- `.gitignore` — files to ignore
-
----
-
 ## 🛠️ Build & run (clang++)
 
 Quick compile (single file / prototype):
@@ -45,14 +35,6 @@ clang++ -std=c++17 -O2 -Wall -Wextra src/*.cpp -I include -o bin/cli_bank
 ```
 
 > Tip: Use `-g` while developing to include debug symbols, and consider `clang-tidy` / `clang-format` for style and linting.
-
----
-
-## 🧭 Next steps / ideas
-
-- Implement account persistence (file or simple DB)
-- Add unit tests and a `Makefile` or `CMake` build
-- Improve CLI (subcommands, input validation)
 
 ---
 
