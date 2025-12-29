@@ -3,16 +3,15 @@
 #include <string>
 using namespace std;
 
-
 // =======================================================
 // Representa UNA cuenta bancaria individual
 // Guarda únicamente información, no ejecuta acciones
 // =======================================================
 struct Bank_account
 {
-    int account_id;    
-    string user_name;  
-    double balance;    
+  int account_id;
+  string user_name;
+  double balance;
 };
 
 // =======================================================
@@ -21,16 +20,17 @@ struct Bank_account
 // =======================================================
 struct Bank
 {
-    string bank_name;   
+  string bank_name;
 
-    // Colección de cuentas bancarias
-    // Este vector permite almacenar múltiples cuentas
-    // Todas las cuentas son del tipo Bank_account
-    vector<Bank_account> accounts;
+  // Colección de cuentas bancarias
+  // Este vector permite almacenar múltiples cuentas
+  // Todas las cuentas son del tipo Bank_account
+  vector<Bank_account> accounts;
 };
 
-
-int main(){
-  cout << "Hello world \n";
+// prueba git diff
+int main()
+{
+  cout << "HELLO WORLD \n";
   return 0;
 }
