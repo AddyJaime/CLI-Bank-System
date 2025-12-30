@@ -26,11 +26,24 @@ struct Bank
   // Este vector permite almacenar múltiples cuentas
   // Todas las cuentas son del tipo Bank_account
   vector<Bank_account> accounts;
+
+  
 };
 
-// prueba git diff
 int main()
 {
-  cout << "HELLO WORLD \n";
+  // crear un banco
+  Bank my_bank;
+  my_bank.bank_name = "Popular";
+
+  // creo la cuenta
+  Bank_account cuenta_1 = {1, "Addy Jaime", 100};
+
+  // guardo la cuenta en mi banco
+  my_bank.accounts.push_back(cuenta_1);
+
+  cout << "ID " << my_bank.accounts[0].account_id << "\n";
+  cout << "Name " << my_bank.accounts[0].user_name << "\n";
+  cout << "Balance " << my_bank.accounts[0].balance << "\n";
   return 0;
 }
