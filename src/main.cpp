@@ -44,44 +44,57 @@ int main()
   my_bank.accounts.push_back(cuenta_1);
   my_bank.accounts.push_back(cuenta_2);
 
-   
-
- 
 
  bool active_program = true;
+
+
+ bool found = false;
+
 
  while (active_program)
  {
 
    cout << "Menu: " << "\n";
   // <-------------------------------------->
-  cout << "1:Crear cuenta" << "\n";
-  cout << "2:Ver cuenta" << "\n";
+  cout << "1:Ver cuenta" << "\n";
+  cout << "2: crear cuetna" << "\n";
   cout << "3:Salir" << "\n";
+
+
  
-   int user_number;
+   int  user_number;
  cout << "Please enter a number to continue:  \n";
  cin >> user_number;
+int ID;
 
  if (user_number == 1)
  {
-  cout << "Crear cuenta Pendiendte" << "\n";
- } else if (user_number == 2)
+  cout << "Please enter an id" << "\n";
+  cin >> ID;
+
+ for (int i = 0; i < my_bank.accounts.size(); i++)
  {
-  cout << "Ver cuenta (pendiente)"<< "\n";
- } else if ( user_number == 3)
- {
-  active_program = false;
- } else
- {
-   cout << "Opción no válida, intenta otra vez " << "\n";
-}
+   if (ID == my_bank.accounts[i].account_id)
+   {
+     
+     cout << "Account found: " << my_bank.accounts[i].user_name << "\n";
+     found = true;
+     break;
+   } 
+
+  } 
+  
+  if (!found)
+  {
+    cout << "Account not found \n";
+  }
  }
  
 
 
 
-
+ }
+ 
 
 //   int ID = 2;
 //   bool found = false;
