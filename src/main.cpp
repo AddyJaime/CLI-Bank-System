@@ -38,12 +38,33 @@ int main()
 
   // creo la cuenta
   Bank_account cuenta_1 = {1, "Addy Jaime", 100};
+  Bank_account cuenta_2 = {2, "Juan", 200};
 
   // guardo la cuenta en mi banco
   my_bank.accounts.push_back(cuenta_1);
+  my_bank.accounts.push_back(cuenta_2);
 
-  cout << "ID " << my_bank.accounts[0].account_id << "\n";
-  cout << "Name " << my_bank.accounts[0].user_name << "\n";
-  cout << "Balance " << my_bank.accounts[0].balance << "\n";
+  
+  int ID = 2;
+  bool found = false;
+
+for (int i = 0; i < my_bank.accounts.size(); i++)
+{
+  if (ID == my_bank.accounts[i].account_id)
+  {
+    
+    cout << "Account found: " << my_bank.accounts[i].user_name << "\n";
+    found = true;
+    break;
+  } 
+  
+}
+
+if (!found)
+{
+  cout << "Account not found \n";
+}
+
+
   return 0;
 }
