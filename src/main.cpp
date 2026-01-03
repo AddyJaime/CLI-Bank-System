@@ -46,7 +46,7 @@ int main()
 
 
  bool active_program = true;
- bool found = false;
+
  
  while (active_program)
  {
@@ -57,32 +57,43 @@ int main()
   cout << "2: crear cuetna" << "\n";
   cout << "3:Salir" << "\n";
 
-   int  user_number;
- cout << "Please enter a number to continue:  \n";
- cin >> user_number;
-int ID;
+   int  user_option;
+ cout << "Choose an option:  ";
+ cin >> user_option;
 
- if (user_number == 1)
+
+
+ if (user_option == 1)
  {
-  cout << "Please enter an id" << "\n";
+     // ---------- VIDA DE LA ACCIÓN "VER CUENTA" ----------
+    //  es mejro que foud este dentro del while asi cambia su estado en cada vuelta de la busqueda 
+   bool found = false;
+
+
+  int ID;
+  cout << "Enter account ID: ";
   cin >> ID;
 
  for (int i = 0; i < my_bank.accounts.size(); i++)
  {
-   if (ID == my_bank.accounts[i].account_id)
+   if (my_bank.accounts[i].account_id == ID)
    {
-     
-     cout << "Account found: " << my_bank.accounts[i].user_name << "\n";
-     found = true;
-     break;
+     cout << "Account found \n";
+     cout << "Name: " << my_bank.accounts[i].user_name << "\n";
+     cout << "Balance: " << my_bank.accounts[i].balance << "\n";
+
+     found = true; //Aqui marcamos que la ewncontramos 
+     break;  //Salimos del loop
    } 
 
   } 
   
+  // Si terminamos de buscar y No se encontro
   if (!found)
   {
     cout << "Account not found \n";
   }
+  // ------------------------ "Fin de la accion ver cuenta" -----------------
  }
  }
  
