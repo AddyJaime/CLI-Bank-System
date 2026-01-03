@@ -46,11 +46,8 @@ int main()
 
 
  bool active_program = true;
-
-
  bool found = false;
-
-
+ 
  while (active_program)
  {
 
@@ -60,8 +57,6 @@ int main()
   cout << "2: crear cuetna" << "\n";
   cout << "3:Salir" << "\n";
 
-
- 
    int  user_number;
  cout << "Please enter a number to continue:  \n";
  cin >> user_number;
@@ -89,10 +84,6 @@ int ID;
     cout << "Account not found \n";
   }
  }
- 
-
-
-
  }
  
 
