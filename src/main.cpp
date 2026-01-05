@@ -57,6 +57,7 @@ int main()
         cout << "\n============================\n";
         cout << "1️⃣: View account\n";
         cout << "2️⃣: Create account\n";
+        cout << "3️⃣: Deposit money\n";
         cout << "\n==============================\n";
 
         int user_option;
@@ -156,12 +157,57 @@ int main()
         } // aqui termina el if de la op[cion 2]
 
         // ===================================================
-        // ⚠️ INVALID OPTION
-        else
+   
+       bool was_account_found = false;
+
+
+        if (user_option == 3)
+        {
+            int ID;
+            int money_deposit = 0;
+            cout << "\n 🧾Account verification — enter account ID: ";
+            cin >> ID;
+            // El loop se detiene solo cuando ya no hay más cuentas
+            for (int i = 0; i < my_bank.accounts.size(); i++)
+            {
+                if (my_bank.accounts[i].account_id == ID)
+                {
+                    was_account_found = true;
+                    cout << "\n Account found \n";
+                    cout << "👤 Name : " << my_bank.accounts[i].user_name << endl;
+                    cout << "💰 Balance: $" << my_bank.accounts[i].balance << endl;
+                    cout << "\n=====================\n";
+                    cout << "💰 Enter the amount you wish to deposit: ";
+                    cin >> money_deposit;
+                    cin.ignore();
+                    my_bank.accounts[i].balance += money_deposit;
+                    cout << "\n======================================= \n";
+                    cout << " | 💸 Deposit Successful: " << endl;
+                    cout << " | 👤 User: " << my_bank.accounts[i].user_name << " \n";
+                    cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
+                    break;
+                }
+     
+            }
+            if (!was_account_found)
+            {
+                cout << "❌ Account was not found, please try again";
+            }
+            
+           
+        }
+        
+
+            // ⚠️ INVALID OPTION
+               else
         {
             cout << "\nInvalid option. Try again.\n";
         }
+        
+     
     }
+
+
 
     return 0;
 }
