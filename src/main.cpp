@@ -57,7 +57,8 @@ int main()
         cout << "\n============================\n";
         cout << "1️⃣: View account\n";
         cout << "2️⃣: Create account\n";
-        cout << "3️⃣: Deposit money\n";
+        cout << "3️⃣: Deposit money\n";   
+        cout << "4️⃣: Exit\n";
         cout << "\n==============================\n";
 
         int user_option;
@@ -73,6 +74,7 @@ int main()
 
             int ID;
             cout << "\n 🧾Enter account ID: ";
+            cin.ignore();
             cin >> ID;
 
             for (int i = 0; i < my_bank.accounts.size(); i++)
@@ -97,7 +99,7 @@ int main()
         // ===================================================
         // ⌥ OPTION 2: CREATE ACCOUNT (NAME VALIDATION)
         // ===================================================
-        else if (user_option == 2)
+         else if (user_option == 2)
         {
           // Cuando el usuario escribe "2" y presiona ENTER, en el buffer quedan dos cosas:
           // el número '2' y el caracter ENTER ('\n').
@@ -123,7 +125,7 @@ int main()
                     valid_name = false;
                 }
 
-                // Rule 2️⃣: only letters and spaces
+                // Rule 2️⃣: only letters and spaces 
                 for (char c : user_name)
                 {
                   // esto pregunta si c es una letra. y tamibrn si c no es un espacio
@@ -157,12 +159,9 @@ int main()
         } // aqui termina el if de la op[cion 2]
 
         // ===================================================
-   
-       bool was_account_found = false;
-
-
-        if (user_option == 3)
+        else if (user_option == 3)
         {
+            bool was_account_found = false;
             int ID;
             int money_deposit = 0;
             cout << "\n 🧾Account verification — enter account ID: ";
@@ -196,18 +195,15 @@ int main()
             
            
         }
-        
-
-            // ⚠️ INVALID OPTION
-               else
+        // Exit program here
+        else if (user_option == 4)
         {
+            active_program = false;
+        }
+        else {
             cout << "\nInvalid option. Try again.\n";
         }
-        
-     
-    }
-
-
+    } 
 
     return 0;
 }
