@@ -155,7 +155,7 @@ int main()
             cout << "🆔 Account_id:  " << new_id << endl;
             cout << "👤 Name : " << user_name << endl;
             cout << "💰 Balance: $" << balance << endl;
-     
+            
         } // aqui termina el if de la op[cion 2]
 
         // ===================================================
@@ -186,14 +186,14 @@ int main()
                     cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
                     break;
                 }
-     
+
             }
             if (!was_account_found)
             {
                 cout << "❌ Account was not found, please try again";
             }
             
-           
+
         }
         // Exit program here
         else if (user_option == 4)
