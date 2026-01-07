@@ -231,9 +231,7 @@ int main()
                 else if (user_option == 5)
                 {
             active_program = false;
-            }
-      
-                
+            }          
             }
             
         }
