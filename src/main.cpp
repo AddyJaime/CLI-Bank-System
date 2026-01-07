@@ -217,6 +217,16 @@ int main()
                      
 
                 }
+
+                if (ID != my_bank.accounts[i].account_id)
+                {
+                    cout << " ❌This ID does not exist: ";
+                     cout << "\n 🧾Account verification — enter account ID: ";
+                       int ID;
+                    cin >> ID;
+                    break;
+                }
+                
                  // Exit program here
                 else if (user_option == 5)
                 {
