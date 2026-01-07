@@ -57,8 +57,9 @@ int main()
         cout << "\n============================\n";
         cout << "1️⃣: View account\n";
         cout << "2️⃣: Create account\n";
-        cout << "3️⃣: Deposit money\n";   
-        cout << "4️⃣: Exit\n";
+        cout << "3️⃣: Deposit money\n";
+        cout << "4️⃣: Withdraw\n";   
+        cout << "5️⃣: Exit\n";
         cout << "\n==============================\n";
 
         int user_option;
@@ -195,12 +196,38 @@ int main()
             
 
         }
-        // Exit program here
-        else if (user_option == 4)
-        {
+       
+        else if(user_option == 4){
+            cout << "\n 🧾Account verification — enter account ID: ";
+            int ID;
+            cin >> ID;
+            for (int i = 0; i < my_bank.accounts.size(); i++)
+            {
+                if (my_bank.accounts[i].account_id == ID)
+                {
+                   cout << "\n 💰 Enter the amount you wish to withdraw: ";
+                    int withdraw_amount;
+                    cin >> withdraw_amount;
+
+                    if (withdraw_amount < my_bank.accounts[i].balance || withdraw_amount == 0)
+                    {
+                        cout << "I am sorry but you can not withdraw less money than what you have or you dont have enoguht money";
+                        cout << "\n 💰 Enter the amount you wish to withdraw: ";
+                    }
+                     
+
+                }
+                 // Exit program here
+                else if (user_option == 5)
+                {
             active_program = false;
+            }
+      
+                
+            }
+            
         }
-        else {
+          else {
             cout << "\nInvalid option. Try again.\n";
         }
     } 
