@@ -61,9 +61,9 @@ int main()
         cout << "4️⃣: Withdraw\n";   
         cout << "5️⃣: Exit\n";
         cout << "\n==============================\n";
+        cout << "👉 Select an option: ";
 
         int user_option;
-        cout << "👉 Choose an option: ";
         cin >> user_option;
 
         // ===================================================
@@ -85,7 +85,6 @@ int main()
                     cout << "\n✅Account found:\n";
                     cout << "👤 Name: " << my_bank.accounts[i].user_name << "\n";
                     cout << "💰 Balance: $" << my_bank.accounts[i].balance << "\n";
-
                     found = true;
                     break;
                 }
@@ -93,9 +92,9 @@ int main()
 
             if (!found)
             {
-                cout << "\nAccount not found: \n";
+                cout << "\nAccount not found. Returning to menu: \n";
             }
-        } // aqui termina el if de la opcion 1
+        } 
 
         // ===================================================
         // ⌥ OPTION 2: CREATE ACCOUNT (NAME VALIDATION)
@@ -115,7 +114,7 @@ int main()
 
             while (!valid_name)
             {
-                cout << "\n✍️ Enter your full name:  ";
+                cout << "\n✍️  Enter full name:  ";
                 getline(cin, user_name);
 
                 valid_name = true;
@@ -139,7 +138,7 @@ int main()
 
                 if (!valid_name)
                 {
-                    cout << "❌ Name incorrect. Try again.\n";
+                    cout << "❌ Invalid name. Try again.\n";
                 }
             }
             //🧠 System decisions 
@@ -156,13 +155,17 @@ int main()
             cout << "👤 Name : " << user_name << endl;
             cout << "💰 Balance: $" << balance << endl;
             
-        } // aqui termina el if de la op[cion 2]
-        // ===================================================
+        } 
+
+        // ================================ 
+        // 💰 DEPOSIT MONEY
+        // ================================
         else if (user_option == 3)
         {
-            bool was_account_found = false;
             int ID;
-            int money_deposit = 0;
+            bool found = false;
+            double amount;
+
             cout << "\n 🧾Account verification — enter account ID: ";
             cin >> ID;
             // El loop se detiene solo cuando ya no hay más cuentas
@@ -170,70 +173,102 @@ int main()
             {
                 if (my_bank.accounts[i].account_id == ID)
                 {
-                    was_account_found = true;
+                    found = true;
                     cout << "\n Account found \n";
                     cout << "👤 Name : " << my_bank.accounts[i].user_name << endl;
                     cout << "💰 Balance: $" << my_bank.accounts[i].balance << endl;
                     cout << "\n=====================\n";
-                    cout << "💰 Enter the amount you wish to deposit: ";
-                    cin >> money_deposit;
-                    cin.ignore();
-                    my_bank.accounts[i].balance += money_deposit;
-                    cout << "\n======================================= \n";
-                    cout << " | 💸 Deposit Successful: " << endl;
-                    cout << " | 👤 User: " << my_bank.accounts[i].user_name << " \n";
-                    cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
-                    break;
-                }
+                    cout << "💰 Enter deposit amount: ";
+                    cin >> amount;
 
-            }
-            if (!was_account_found)
-            {
-                cout << "❌ Account was not found, please try again";
-            }
-            
-
-        }
-       
-        else if(user_option == 4){
-            cout << "\n 🧾Account verification — enter account ID: ";
-            int ID;
-            cin >> ID;
-            bool was_account_found = false;
-            double money_withdraw;
-            for (int i = 0; i < my_bank.accounts.size(); i++)
-            {
-                if (ID == my_bank.accounts[i].account_id )
-                {
-                    was_account_found = true;
-                    cout << "How much do you want to withdraw"<< endl;
-                    cin >> money_withdraw;
-                    if (money_withdraw > 0)
+                    if (amount > 0)
                     {
-                        my_bank.accounts[i].balance -= money_withdraw;
+                        my_bank.accounts[i].balance += amount;
                         cout << "\n======================================= \n";
-                        cout << " | 💸 Money withdraw Successful: " << endl;
+                        cout << " | 💸 Deposit Successful: " << endl;
                         cout << " | 👤 User: " << my_bank.accounts[i].user_name << " \n";
                         cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
-                  
-                    } else {
-                        cout << "Money can not get withdraw" << endl;
-                    }
-                   
+                       }
+                       else {
+                        cout << "❌ Invalid amount. Operation cancelled.\n";
+                       }
+                       break;
+                    
+                    
+                }
 
-                }
-                }
+            }
+            if (!found)
+            {
+                 cout << "❌ Account not found. Returning to menu.\n";
+            }
+        }
 
-               if (!ID)
-               {
-                cout << "This ID does not exist"<< endl;
-               }
-                 // Exit program here
-                }
-                else if (user_option == 5)
+
+
+        // ==============================
+        // 💸 WITHDRAW MONEY
+        // ==============================
+       
+        else if(user_option == 4){
+            int ID;
+            bool found = false;
+            double amount;
+
+            cout << "\n 🧾Account verification — enter account ID: ";
+            cin >> ID;
+
+            for (int i = 0; i < my_bank.accounts.size(); i++)
+            {
+                if (ID == my_bank.accounts[i].account_id)
                 {
+                    found = true;
+                    cout << "👤 User: " << my_bank.accounts[i].user_name << " \n";
+                    cout << "💰 Current balance: " << my_bank.accounts[i].balance << "$ \n";
+                    cout << "💸 Enter withdrawal amount : ";
+                    cin >> amount;
+
+                    if (amount > 0 && amount <= my_bank.accounts[i].balance)
+                    {
+                        my_bank.accounts[i].balance -= amount;
+                        cout << "\n======================================= \n";
+                        cout << " | 💸 WITHDRAW SUCCESSFULl: " << endl;
+                        cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
+                         cout << "\n======================================= \n";
+                } else 
+                {
+                     cout << "❌ Invalid amount or insufficient funds.\n";
+                }
+                break;
+              
+                
+            }
+            
+             
+                }
+
+
+               if (!found)
+               {
+                cout << "❌ Account not found. Returning to menu.\n";
+               }
+               
+                }
+
+
+        // ==============================
+        // 🚪 EXIT
+        // ==============================
+
+        else if (user_option == 5)
+                {
+            cout << "\n👋 Thank you for using the bank system. Goodbye!\n";
             active_program = false;
-            }          
+
+        }
+            // ==============================
+        // ❌ INVALID OPTION
+        // ==============================          
             else {
               cout << "\nInvalid option. Try again.\n";
           }
