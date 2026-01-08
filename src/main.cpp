@@ -150,15 +150,13 @@ int main()
             Bank_account cuenta_3 = {new_id, user_name, balance};
             my_bank.accounts.push_back(cuenta_3);
 
-            // ✅COnfirmation 
-        
+            // ✅Confirmation 
             cout << "\n Account created successfully!\n" << endl;
             cout << "🆔 Account_id:  " << new_id << endl;
             cout << "👤 Name : " << user_name << endl;
             cout << "💰 Balance: $" << balance << endl;
             
         } // aqui termina el if de la op[cion 2]
-
         // ===================================================
         else if (user_option == 3)
         {
@@ -201,44 +199,47 @@ int main()
             cout << "\n 🧾Account verification — enter account ID: ";
             int ID;
             cin >> ID;
+            bool was_account_found = false;
+            double money_withdraw;
             for (int i = 0; i < my_bank.accounts.size(); i++)
             {
-                if (my_bank.accounts[i].account_id == ID)
+                if (ID == my_bank.accounts[i].account_id )
                 {
-                   cout << "\n 💰 Enter the amount you wish to withdraw: ";
-                    int withdraw_amount;
-                    cin >> withdraw_amount;
-
-                    if (withdraw_amount < my_bank.accounts[i].balance || withdraw_amount == 0)
+                    was_account_found = true;
+                    cout << "How much do you want to withdraw"<< endl;
+                    cin >> money_withdraw;
+                    if (money_withdraw > 0)
                     {
-                        cout << "I am sorry but you can not withdraw less money than what you have or you dont have enoguht money";
-                        cout << "\n 💰 Enter the amount you wish to withdraw: ";
+                        my_bank.accounts[i].balance -= money_withdraw;
+                        cout << "\n======================================= \n";
+                        cout << " | 💸 Money withdraw Successful: " << endl;
+                        cout << " | 👤 User: " << my_bank.accounts[i].user_name << " \n";
+                        cout << " | 💰 New Balance: " << my_bank.accounts[i].balance << "$ \n";
+                  
+                    } else {
+                        cout << "Money can not get withdraw" << endl;
                     }
-                     
+                   
 
                 }
-
-                if (ID != my_bank.accounts[i].account_id)
-                {
-                    cout << " ❌This ID does not exist: ";
-                     cout << "\n 🧾Account verification — enter account ID: ";
-                       int ID;
-                    cin >> ID;
-                    break;
                 }
-                
+
+               if (!ID)
+               {
+                cout << "This ID does not exist"<< endl;
+               }
                  // Exit program here
+                }
                 else if (user_option == 5)
                 {
             active_program = false;
             }          
-            }
+            else {
+              cout << "\nInvalid option. Try again.\n";
+          }
             
         }
-          else {
-            cout << "\nInvalid option. Try again.\n";
-        }
+        return 0;
     } 
 
-    return 0;
-}
+
